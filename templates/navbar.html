@@ -1,0 +1,20 @@
+{% load static %}
+<nav>
+    <div class="nav-wrapper grey darken-3 z-depth-5">
+      <a href="#" class="brand-logo center" style="color: #ffab40;">Surchessake</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a href="{% url 'index' %}" style="color: #ffab40;">Home</a></li>
+        <li><a href="{% url 'downloads' %}" style="color: #ffab40;">Downloads</a></li>
+        <li><a href="{% url 'tournaments' %}" style="color: #ffab40;">Tournaments</a></li>
+      </ul>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				{% if user.is_authenticated %}
+					{% url 'profile' as profile_url %}
+					<li><a href="{{ profile_url }}" style="color: #ffab40;">{{ user.username }}</a></li>
+					<li><a href="{% url 'logout' %}" style="color: #ffab40;">Logout</a></li>
+				{% else %}
+					<li><a href="{% url 'login' %}" style="color: #ffab40;">Login</a></li>
+				{% endif %}
+			</ul>
+    </div>
+  </nav>
